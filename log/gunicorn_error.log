@@ -1,0 +1,109 @@
+[2019-10-22 17:26:41 +0800] [19023] [CRITICAL] WORKER TIMEOUT (pid:19026)
+[2019-10-22 17:26:41 +0800] [19335] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/workers/gthread.py", line 104, in init_process
+    super(ThreadWorker, self).init_process()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/workers/base.py", line 129, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/workers/base.py", line 138, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 52, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 41, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/util.py", line 350, in import_app
+    __import__(module)
+  File "/usr/coin/Main.py", line 2, in <module>
+    from strategy.manage import Manage
+  File "/usr/coin/strategy/manage.py", line 1, in <module>
+    from common.Common import Common
+  File "/usr/coin/common/Common.py", line 6, in <module>
+    class Common(object):
+  File "/usr/coin/common/Common.py", line 117, in Common
+    print('用户：{}------{}'.format(user,text))
+OSError: [Errno 5] Input/output error
+[2019-10-22 17:41:57 +0800] [20263] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/workers/gthread.py", line 104, in init_process
+    super(ThreadWorker, self).init_process()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/workers/base.py", line 129, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/workers/base.py", line 138, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 52, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 41, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/util.py", line 350, in import_app
+    __import__(module)
+  File "/usr/coin/api/__init__.py", line 5, in <module>
+    from api import server_start
+ImportError: cannot import name 'server_start' from 'api' (/usr/coin/api/__init__.py)
+[2019-10-22 17:42:05 +0800] [20278] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/workers/gthread.py", line 104, in init_process
+    super(ThreadWorker, self).init_process()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/workers/base.py", line 129, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/workers/base.py", line 138, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 52, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 41, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/util.py", line 350, in import_app
+    __import__(module)
+  File "/usr/coin/api/__init__.py", line 5, in <module>
+    from api import server_start
+ImportError: cannot import name 'server_start' from 'api' (/usr/coin/api/__init__.py)
+[2019-10-22 17:42:50 +0800] [20322] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/workers/gthread.py", line 104, in init_process
+    super(ThreadWorker, self).init_process()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/workers/base.py", line 129, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/workers/base.py", line 138, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 52, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/app/wsgiapp.py", line 41, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python3.7/site-packages/gunicorn/util.py", line 350, in import_app
+    __import__(module)
+  File "/usr/coin/api/__init__.py", line 20, in <module>
+    server_start(app)
+  File "/usr/coin/api/__init__.py", line 17, in server_start
+    app.run(host=Common.server_host, port=Common.server_port, debug=False)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 943, in run
+    run_simple(host, port, self, **options)
+  File "/usr/local/lib/python3.7/site-packages/werkzeug/serving.py", line 814, in run_simple
+    inner()
+  File "/usr/local/lib/python3.7/site-packages/werkzeug/serving.py", line 774, in inner
+    fd=fd)
+  File "/usr/local/lib/python3.7/site-packages/werkzeug/serving.py", line 660, in make_server
+    passthrough_errors, ssl_context, fd=fd)
+  File "/usr/local/lib/python3.7/site-packages/werkzeug/serving.py", line 577, in __init__
+    self.address_family), handler)
+  File "/usr/local/lib/python3.7/socketserver.py", line 449, in __init__
+    self.server_bind()
+  File "/usr/local/lib/python3.7/http/server.py", line 137, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/usr/local/lib/python3.7/socketserver.py", line 463, in server_bind
+    self.socket.bind(self.server_address)
+OSError: [Errno 98] Address already in use
