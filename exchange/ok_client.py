@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import traceback
 
 from exchange.ok_api import OkAPI
 from common.Client import Client
@@ -182,6 +183,7 @@ class OkClient(Client):
             return amount
         except Exception as e:
             print('异常了-f_account', e)
+            traceback.print_exc()
 
     @retry(stop_max_attempt_number=3)
     def f_position(self, instrument_id):
@@ -197,6 +199,7 @@ class OkClient(Client):
         except Exception as e:
             time.sleep(1)
             print('异常了-f_position', e)
+            traceback.print_exc()
 
     def ws_f_ticker(self, message):
         try:
@@ -207,6 +210,7 @@ class OkClient(Client):
                 self.strategy.ws_ticker(self, data)
         except Exception as e:
             print('异常了-ws_f_ticker', e, message)
+            traceback.print_exc()
 
     def ws_f_kline(self, message):
         try:
@@ -217,15 +221,16 @@ class OkClient(Client):
             for i in message:
                 instrument_id = i['instrument_id']
                 candle = i['candle']
-                last_k = candle[0]
+                last_k = candle
 
                 data = {'exchange': self.exchange_name, 'instrument_id': instrument_id, 'interval': interval,
                         'time': last_k[0], 'open': float(last_k[1]), 'high': float(last_k[2]), 'low': float(last_k[3]),
-                        'close': float(last_k[4])}
+                        'close': float(last_k[4]), 'vol': float(last_k[5])}
                 self.strategy.ws_kline(self, data)
 
         except Exception as e:
             print('异常了-ws_f_kline', e, message)
+            traceback.print_exc()
 
     def ws_f_order(self, message):
         try:
@@ -249,6 +254,7 @@ class OkClient(Client):
                 self.strategy.ws_order(self, data)
         except Exception as e:
             print('异常了-ws_f_order', e, message)
+            traceback.print_exc()
 
     def ws_f_account(self, message):
         try:
@@ -261,6 +267,7 @@ class OkClient(Client):
             print('ws_f_account', self._f_balance)
         except Exception as e:
             print('异常了--ws_account', e, message)
+            traceback.print_exc()
 
     def ws_f_position(self, message):
         try:
@@ -271,10 +278,11 @@ class OkClient(Client):
                 self.strategy.ws_position(self, data)
         except Exception as e:
             print('异常了-ws_f_position', e, message)
+            traceback.print_exc()
 
     def get_instrument_id(self, instruments, symbol, contract_type):
         for instrument in instruments:
-            if instrument['symbol'] == symbol and instrument['contract_type' == contract_type]:
+            if instrument['symbol'] == symbol and instrument['contract_type'] == contract_type:
                 return instrument['instrument_id']
 
     def ws_f_sub(self, subs):

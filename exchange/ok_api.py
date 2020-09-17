@@ -5,6 +5,8 @@ import base64
 import datetime
 import hmac
 import json
+import traceback
+
 import requests
 import threading
 import time
@@ -300,7 +302,7 @@ class OkAPI:
 
     def on_message(self, message):
         data = json.loads(self.inflate(message))
-        print('ok_on_message', data)
+        # print('ok_on_message', data)
         if 'table' in data:
             table = data['table']
             if table.find('spot/ticker') != -1:
@@ -339,7 +341,7 @@ class OkAPI:
                 pass
 
         elif 'event' in data:
-            print(data)
+            print(data['event'])
             if data['event'] == 'login':
                 s = []
                 for sub_config in self.__ws_subs:
@@ -399,6 +401,7 @@ class OkAPI:
             self.__sub_connect.run_forever(ping_interval=20)
         except Exception as e:
             print('异常了--ok--__ws_sub_create', e)
+            traceback.print_exc()
             time.sleep(5)
             self.__ws_sub_create()
 
@@ -413,6 +416,6 @@ if __name__ == '__main__':
     ins = o.f_ticker("XRP-USD-200925")
     print(ins)
     sub_list = []
-    sub_config = SubConfig(Common.futures, "XRP-USD-200925", "", Common.frequency_tick)
+    sub_config = SubConfig("XRP-USD-200925", "", Common.frequency_tick)
     sub_list.append(sub_config)
     o.ws_sub(sub_list)

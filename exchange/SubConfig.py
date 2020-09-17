@@ -1,12 +1,14 @@
+from common.Common import Common
+
+
 class SubConfig:
-    trade_kind = None   # 交易类型（币币、交割、永续）
+    trade_kind = Common.futures   # 交易类型（币币、交割、永续）
     symbol = None  # 币种
     contract_type = None  # 合约类型
     frequency = None  # 频率
     instrument_id = None  # 币种编号
 
-    def __init__(self, trade_kind, symbol, contract_type, frequency):
-        self.trade_kind = trade_kind
+    def __init__(self, symbol, contract_type, frequency):
         self.symbol = symbol
         self.contract_type = contract_type
         self.frequency = frequency
@@ -27,9 +29,9 @@ class SubConfig:
 
 if __name__ == '__main__':
     l = []
-    subA = SubConfig(1, 1, 1, 1)
+    subA = SubConfig(1, 1, 1)
     l.append(subA)
-    subB = SubConfig(1, 1, 1, 1)
+    subB = SubConfig(1, 1, 1)
     print(id(subA))
     print(id(subB))
     print(subA == subB)
