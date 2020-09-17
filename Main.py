@@ -4,7 +4,9 @@ from strategy.etf import Etf
 from flask import Flask
 import os
 
-Etf().start()
+from strategy.test import Test
+
+Test().start()
 
 app = Flask(__name__)
 
